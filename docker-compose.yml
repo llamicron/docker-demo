@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  data-service:
+    build: ./data
+    volumes:
+      - ./data:/usr/src/app
+
+  website:
+    build: ./website
+    volumes:
+      - ./website/:/usr/src/app
+    ports:
+      - 5000:80
