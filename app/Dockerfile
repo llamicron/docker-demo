@@ -1,3 +1,3 @@
 FROM python:3-onbuild
 COPY . /usr/src/app
-CMD ["python", "site.py"]
+CMD ["python3", "app.py"]

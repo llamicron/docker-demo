@@ -1,14 +1,16 @@
 version: '3'
 
 services:
-  data-service:
-    build: ./data
-    volumes:
-      - ./data:/usr/src/app
-
-  website:
-    build: ./website
-    volumes:
-      - ./website/:/usr/src/app
+  redis-service:
+    image: redis:4.0.5-alpine
+    command: ["redis-server", "--appendonly", "yes"]
     ports:
-      - 5000:80
+      - 6379:6379
+    restart: always
+
+  app:
+    build: ./app
+    volumes:
+      - ./app/:/usr/src/app
+    ports:
+      - 8080:80
